@@ -65,17 +65,34 @@ module.exports = {
       },
 
       /** 匹配图片资源 */
+      // {
+      //   test: /\.(png|jpe?g|gif|svg)$/i,
+      //   use: [
+      //     {
+      //       loader: 'file-loader',
+      //       options: {
+      //         /** 文件名称 */
+      //         // name: 'img/[name].[hash:8].[ext]', // img/ 可以省略 outputPath
+      //         name: '[name].[hash:8].[ext]',
+      //         /** 对图片打包存放的目录 */
+      //         outputPath: 'img'
+      //       }
+      //     }
+      //   ]
+      // }
       {
         test: /\.(png|jpe?g|gif|svg)$/i,
         use: [
           {
-            loader: 'file-loader',
+            loader: 'url-loader',
             options: {
               /** 文件名称 */
               // name: 'img/[name].[hash:8].[ext]', // img/ 可以省略 outputPath
               name: '[name].[hash:8].[ext]',
               /** 对图片打包存放的目录 */
-              outputPath: 'img'
+              outputPath: 'img',
+              /** 设置了 limit，如果大于这个的资源，不会进行 base64转换，反之转换 */
+              limit: 100 * 1024
             }
           }
         ]
