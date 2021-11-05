@@ -1,0 +1,5 @@
+.content {
+  /** 8 位，后面的2位会转换为透明度 */
+  color: #00000022;
+  user-select: none;
+}

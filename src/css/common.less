@@ -1,0 +1,13 @@
+/**
+  在安装了 less 的时候，可以通过 npx lessc origin.less target.css的方式输出. ——lessc less -compare
+  如  npx lessc src/css/common.less src/css/common1.css
+*/
+
+@mainBgColor: #f40;
+@fontSize: 20px;
+
+
+.content {
+  font-size: @fontSize;
+  background-color: @mainBgColor;
+}

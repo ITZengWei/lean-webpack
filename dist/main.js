@@ -1,1 +1,0 @@
-(()=>{var r={466:r=>{r.exports={priceForm:function(){return"¥99.88"}}}},o={};function e(t){var n=o[t];if(void 0!==n)return n.exports;var s=o[t]={exports:{}};return r[t](s,s.exports,e),s.exports}(()=>{"use strict";const{priceForm:r}=e(466);console.log(3),console.log(r(1,2))})()})();
