@@ -6,8 +6,10 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 
 module.exports = {
-  /** 打包模式 */
+  /** 打包模式 development | production */
   mode: 'development',
+  /** 设置 source-map 更好的调试代码 */
+  devtool: 'source-map',
   /** 打包源文件入口 */
   entry: './src/index.js',
   output: {
