@@ -141,6 +141,26 @@ module.exports = {
         generator: {
           filename: 'font/[name].[hash:6][ext]'
         }
+      },
+      {
+        test: /\.js$/,
+        /** 通过 babel.config.js 抽离出去配置 */
+        use: ['babel-loader'],
+        // use: [
+        //   {
+        //     loader: 'babel-loader',
+        //     options: {
+        //       /** 加入 箭头函数以及声明会块级作用域的插件 */
+        //       // plugins: [
+        //       //   '@babel/plugin-transform-block-scoping',
+        //       //   '@babel/plugin-transform-arrow-functions'
+        //       // ],
+        //       presets: [
+        //         '@babel/preset-env'
+        //       ]
+        //     }
+        //   }
+        // ]
       }
     ]
   },
