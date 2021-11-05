@@ -1,4 +1,5 @@
 import { createApp } from 'vue/dist/vue.esm-bundler'
+/** 导入 SFC(Single File Component) 文件 */
 import App from './vue/App.vue'
 import { sum } from './js/math'
 import './js/component'
