@@ -4,6 +4,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { DefinePlugin } = require('webpack')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
+const { VueLoaderPlugin } = require('vue-loader/dist/index')
+
 
 module.exports = {
   /** 打包模式 development | production */
@@ -161,6 +163,14 @@ module.exports = {
         //     }
         //   }
         // ]
+      },
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader'
+        // use: [
+        //   /** vue3 通过 vue-loader@next 解析 vue 文件 */
+        //   'vue-loader'
+        // ]
       }
     ]
   },
@@ -192,6 +202,9 @@ module.exports = {
           }
         }
       ]
-    })
+    }),
+
+    /** vue */
+    new VueLoaderPlugin()
   ]
 }
