@@ -188,6 +188,11 @@ module.exports = {
       /** 注意这里面存放的是变量 */
       // BASE_URL: 'rootPath'
       BASE_URL: '"./"',
+      /** 是否需要 options API TODO  */
+      __VUE_OPTIONS_API__: true,
+
+      /** 是否保留 devtools 调试工具 */
+      __VUE_PROD_DEVTOOLS__: false
     }),
 
     /** 原封不动的复制资源到打包的位置 */
