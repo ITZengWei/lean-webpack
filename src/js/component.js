@@ -40,6 +40,8 @@ function iconComponent() {
   return iEle
 }
 
+console.log(content.length)
+
 
 document.body.appendChild(component())
 document.body.appendChild(imgComponent())
