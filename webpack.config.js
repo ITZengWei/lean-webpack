@@ -62,6 +62,14 @@ module.exports = {
           'less-loader',
           'postcss-loader'
         ]
+      },
+
+      /** 匹配图片资源 */
+      {
+        test: /\.(png|jpe?g|gif|svg)$/i,
+        use: [
+          'file-loader'
+        ]
       }
     ]
   }
