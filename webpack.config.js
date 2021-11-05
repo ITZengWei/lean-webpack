@@ -80,23 +80,61 @@ module.exports = {
       //     }
       //   ]
       // }
+      // {
+      //   test: /\.(png|jpe?g|gif|svg)$/i,
+      //   use: [
+      //     {
+      //       loader: 'url-loader',
+      //       options: {
+      //         /** 文件名称 */
+      //         // name: 'img/[name].[hash:8].[ext]', // img/ 可以省略 outputPath
+      //         name: '[name].[hash:8].[ext]',
+      //         /** 对图片打包存放的目录 */
+      //         outputPath: 'img',
+      //         /** 设置了 limit，如果大于这个的资源，不会进行 base64转换，反之转换 */
+      //         limit: 100 * 1024
+      //       }
+      //     }
+      //   ]
+      // }
       {
         test: /\.(png|jpe?g|gif|svg)$/i,
+        type: 'asset',
+        generator: {
+          filename: "img/[name].[hash:6][ext]"
+        },
+        parser: {
+          /** 限制数据url */
+          dataUrlCondition: {
+            /** 同 url-loader limit */
+            maxSize: 100 * 1024
+          }
+        }
+      },
+      /** 通过 file-loader 加载icon */
+      {
+        test: /\.(woff2?|eot|ttf)$/,
         use: [
           {
-            loader: 'url-loader',
+            loader: 'file-loader',
             options: {
               /** 文件名称 */
               // name: 'img/[name].[hash:8].[ext]', // img/ 可以省略 outputPath
               name: '[name].[hash:8].[ext]',
               /** 对图片打包存放的目录 */
-              outputPath: 'img',
-              /** 设置了 limit，如果大于这个的资源，不会进行 base64转换，反之转换 */
-              limit: 100 * 1024
+              outputPath: 'font'
             }
           }
         ]
       }
+      /** 使用 asset module type */
+      // {
+      //   test: /\.(woff2?|eot|ttf)$/,
+      //   type: 'asset/resource',
+      //   generator: {
+      //     filename: 'font/[name].[hash:6][ext]'
+      //   }
+      // }
     ]
   }
 }

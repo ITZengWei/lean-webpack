@@ -5,6 +5,9 @@ import '../css/style.css'
 
 /** 引入图片 */
 import img from '../img/zznh.png'
+/** 引入icon */
+import '../font/iconfont.css'
+
 
 function component() {
   const div = document.createElement('div')
@@ -28,8 +31,18 @@ function imgComponent() {
   return imgEle
 }
 
+function iconComponent() {
+  const iEle = document.createElement('i')
+
+  iEle.className = 'iconfont icon-ashbin'
+
+
+  return iEle
+}
+
 
 document.body.appendChild(component())
 document.body.appendChild(imgComponent())
+document.body.appendChild(iconComponent())
 
 
