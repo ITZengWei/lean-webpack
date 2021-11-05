@@ -68,7 +68,16 @@ module.exports = {
       {
         test: /\.(png|jpe?g|gif|svg)$/i,
         use: [
-          'file-loader'
+          {
+            loader: 'file-loader',
+            options: {
+              /** 文件名称 */
+              // name: 'img/[name].[hash:8].[ext]', // img/ 可以省略 outputPath
+              name: '[name].[hash:8].[ext]',
+              /** 对图片打包存放的目录 */
+              outputPath: 'img'
+            }
+          }
         ]
       }
     ]
