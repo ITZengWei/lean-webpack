@@ -1,4 +1,9 @@
 const path = require('path')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { DefinePlugin } = require('webpack')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+
 
 module.exports = {
   /** 打包模式 */
@@ -7,7 +12,7 @@ module.exports = {
   entry: './src/index.js',
   output: {
     /** 默认打包的文件是 main.js */
-    filename: 'bundle.js',
+    filename: 'js/bundle.js',
     /** 打包文件名 */
     path: path.resolve(__dirname, './dist')
   },
@@ -112,29 +117,59 @@ module.exports = {
         }
       },
       /** 通过 file-loader 加载icon */
-      {
-        test: /\.(woff2?|eot|ttf)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              /** 文件名称 */
-              // name: 'img/[name].[hash:8].[ext]', // img/ 可以省略 outputPath
-              name: '[name].[hash:8].[ext]',
-              /** 对图片打包存放的目录 */
-              outputPath: 'font'
-            }
-          }
-        ]
-      }
-      /** 使用 asset module type */
       // {
       //   test: /\.(woff2?|eot|ttf)$/,
-      //   type: 'asset/resource',
-      //   generator: {
-      //     filename: 'font/[name].[hash:6][ext]'
-      //   }
+      //   use: [
+      //     {
+      //       loader: 'file-loader',
+      //       options: {
+      //         /** 文件名称 */
+      //         // name: 'img/[name].[hash:8].[ext]', // img/ 可以省略 outputPath
+      //         name: '[name].[hash:8].[ext]',
+      //         /** 对图片打包存放的目录 */
+      //         outputPath: 'font'
+      //       }
+      //     }
+      //   ]
       // }
+      /** 使用 asset module type */
+      {
+        test: /\.(woff2?|eot|ttf)$/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'font/[name].[hash:6][ext]'
+        }
+      }
     ]
-  }
+  },
+  plugins: [
+    /** 用于清除打包输出的文件 */
+    new CleanWebpackPlugin(),
+    /** 会自动生成一个模板 */
+    new HtmlWebpackPlugin({
+      /** 定义自定义模板位置 */
+      template: './public/index.html',
+      title: '学习webpack'
+    }),
+    /** 定义模板中的变量 */
+    new DefinePlugin({
+      /** 注意这里面存放的是变量 */
+      // BASE_URL: 'rootPath'
+      BASE_URL: '"./"',
+    }),
+
+    /** 原封不动的复制资源到打包的位置 */
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: 'public',
+          globOptions: {
+            ignore: [
+              '**/index.html'
+            ]
+          }
+        }
+      ]
+    })
+  ]
 }
