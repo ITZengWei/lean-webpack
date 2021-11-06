@@ -12,6 +12,8 @@ module.exports = {
   mode: 'development',
   /** 设置 source-map 更好的调试代码 */
   devtool: 'source-map',
+  /** 监听打包 */
+  // watch: true,
   /** 打包源文件入口 */
   entry: './src/index.js',
   output: {
@@ -19,6 +21,14 @@ module.exports = {
     filename: 'js/bundle.js',
     /** 打包文件名 */
     path: path.resolve(__dirname, './dist')
+  },
+  /** 配置 webpack-dev-server */
+  devServer: {
+    /** 如果在webpack没有引入到资源，会从 ./abc 查找文件 新版本移除 */
+    // contentBase: './abc'
+    static: {
+      directory: path.join(__dirname, 'public'),
+    },
   },
   module: {
     rules: [
@@ -196,20 +206,20 @@ module.exports = {
     }),
 
     /** 原封不动的复制资源到打包的位置 */
-    new CopyWebpackPlugin({
-      patterns: [
-        {
-          from: 'public',
-          globOptions: {
-            ignore: [
-              '**/index.html'
-            ]
-          }
-        }
-      ]
-    }),
+    // new CopyWebpackPlugin({
+    //   patterns: [
+    //     {
+    //       from: 'public',
+    //       globOptions: {
+    //         ignore: [
+    //           '**/index.html'
+    //         ]
+    //       }
+    //     }
+    //   ]
+    // }),
 
     /** vue */
     new VueLoaderPlugin()
-  ]
+  ],
 }

@@ -18,9 +18,11 @@ console.log(priceForm(1, 2))
 //     return {
 //       msg: 'hello'
 //     }
-//   }
-// })
-
+//   } 
+// })  
+ 
 const app = createApp(App)
+
+console.log('hello')
 
 app.mount('#app')

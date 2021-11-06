@@ -12,7 +12,7 @@ import '../font/iconfont.css'
 function component() {
   const div = document.createElement('div')
 
-  div.className = 'content'
+  div.className = 'content' 
   div.innerHTML = 'Hello Webpack'
 
   return div
