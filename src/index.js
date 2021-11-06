@@ -6,6 +6,13 @@ import './js/component'
 const { priceForm } = require('./js/format')
 import './js/demo'
 
+/** 模块热替换 */
+if (module.hot) {
+  module.hot.accept('./js/component', () => {
+    console.log('hot replace component js file')
+  })
+}
+
 
 console.log(sum(1, 2))
 console.log(priceForm(1, 2))

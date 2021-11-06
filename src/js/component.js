@@ -8,7 +8,7 @@ import img from '../img/zznh.png'
 /** 引入icon */
 import '../font/iconfont.css'
 
-
+console.log('xxx comp')
 function component() {
   const div = document.createElement('div')
 
@@ -41,7 +41,7 @@ function iconComponent() {
 }
 
 
-
+console.log('ccc')
 document.body.appendChild(component())
 document.body.appendChild(imgComponent())
 document.body.appendChild(iconComponent())

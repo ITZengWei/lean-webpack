@@ -8,6 +8,8 @@ const { VueLoaderPlugin } = require('vue-loader/dist/index')
 
 
 module.exports = {
+  /** 打包构建环境 node | web(默认) */
+  target: 'web',
   /** 打包模式 development | production */
   mode: 'development',
   /** 设置 source-map 更好的调试代码 */
@@ -17,7 +19,7 @@ module.exports = {
   /** 打包源文件入口 */
   entry: './src/index.js',
   output: {
-    /** 默认打包的文件是 main.js */
+    /** 默认打包的文件是 main.js */ 
     filename: 'js/bundle.js',
     /** 打包文件名 */
     path: path.resolve(__dirname, './dist')
@@ -29,6 +31,7 @@ module.exports = {
     static: {
       directory: path.join(__dirname, 'public'),
     },
+    hot: true
   },
   module: {
     rules: [
