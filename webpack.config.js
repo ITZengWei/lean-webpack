@@ -31,7 +31,43 @@ module.exports = {
     static: {
       directory: path.join(__dirname, 'public'),
     },
-    hot: true
+    /** 热更新 */
+    hot: true,
+    /** 默认0.0.0.0开启局域网访问 localhost | 127.0.0.0 设置本地回环地址，只能在当前电脑上使用 */
+    host: '0.0.0.0',
+    /** 运行端口号 */
+    port: 8888,
+    /** 直接打开浏览器 */
+    // open: true,
+    /** 通过 gzip 压缩 */
+    compress: true,
+
+    /** 请求代理配置 */
+    proxy: {
+      '/api': {
+        target: 'backend-api-host',
+        /** 替换 前缀 */
+        pathRewrite: {
+          '^/api': ''
+        },
+        /** 默认情况下，将不接受在 HTTPS 上运行且证书无效的后端服务器, 设置为false 就可以接受https */
+        secure: false,
+        /** 在请求多时候，设置 origin 为代理服务器 */
+        changeOrigin: true
+      }
+    },
+  },
+  /** 设置模块如何被解析 */
+  resolve: {
+    /** 尝试按顺序解析这些后缀名 */
+    extensions: ['.js', '.json', '.vue'],
+    /** 解析目录时要使用的文件名。 */
+    mainFiles: ['index'],
+    /** 设置文件别名 */
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+      'js': path.resolve(__dirname, './src/js')
+    }
   },
   module: {
     rules: [
